@@ -1,6 +1,6 @@
 ---
-name: ''
-url: 'https://producthunt.com/'
+name: Product Hunt
+url: 'https://producthunt.com'
 description: ''
 ---
 
