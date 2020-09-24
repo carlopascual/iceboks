@@ -11,6 +11,7 @@ const List = styled.div`
 const Page = ({ markdownFiles }) => (
   <>
     <Head>
+      <title>Iceboks</title>
       <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     </Head>
     <Layout>
