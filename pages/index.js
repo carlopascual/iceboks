@@ -1,7 +1,8 @@
 import _ from "lodash";
+import styled from "styled-components";
 import getFavicons from "get-website-favicon";
 import urlMetadata from "url-metadata";
-import styled from "styled-components";
+import normalizeUrl from "normalize-url";
 import Layout from "../components/layout";
 import Post from "../components/post";
 import getFavicon from "../lib/get-favicon";
@@ -46,6 +47,9 @@ export const getStaticProps = async () => {
     importAll(require.context("../content", false, /\.md$/)).map(
       async ({ attributes }) => {
         const entry = { ...attributes };
+
+        // strip protocols on URL
+        entry.url = normalizeUrl(entry.url);
 
         const checkMissing = (required) =>
           _.reduce(
