@@ -13,6 +13,7 @@
     "frontmatter-markdown-loader": "^3.6.0",
     "get-website-favicon": "^0.0.7",
     "next": "9.5.3",
+    "normalize-url": "^5.1.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "styled-components": "^5.2.0",

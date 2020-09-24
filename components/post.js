@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { BORDER_COLOR } from "./styles";
+import normalizeUrl from "normalize-url";
 
 const Outline = styled.div`
   padding: 16px;
@@ -48,7 +49,7 @@ export default ({ name, description, url, thumbnail, ...props }) => {
                 }}
               />
             )}
-            <URL>{url}</URL>
+            <URL>{normalizeUrl(url, { stripProtocol: true })}</URL>
           </div>
         </a>
       </Link>
