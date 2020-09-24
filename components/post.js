@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { BORDER_COLOR } from "./styles";
-import getFavicon from "../lib/get-favicon";
 
 const Outline = styled.div`
   padding: 16px;
@@ -35,7 +34,7 @@ export default ({ name, description, url, thumbnail, ...props }) => {
   return (
     <Outline>
       <Link href={url}>
-        <a>
+        <a target="_blank" rel="noreferrer">
           <Title>{name}</Title>
           <Description style={{ marginTop: "8px" }}>{description}</Description>
           <div style={{ display: "flex", alignItems: "center" }}>
