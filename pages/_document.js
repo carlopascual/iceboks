@@ -23,9 +23,10 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>My page</title>
+          <title>Iceboks</title>
           {/* Step 5: Output the styles in the head  */}
           {this.props.styleTags}
+          <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
         </Head>
         <body>
           <Main />
