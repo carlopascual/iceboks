@@ -1,28 +1,25 @@
 import Head from "next/head";
-import { Component } from "react";
-import { attributes, react as HomeContent } from "../content/home.md";
 
-export default class Home extends Component {
-  render() {
-    let { title, cats } = attributes;
-    return (
-      <>
-        <Head>
-          <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-        </Head>
-        <article>
-          <h1>{title}</h1>
-          <HomeContent />
-          <ul>
-            {cats.map((cat, k) => (
-              <li key={k}>
-                <h2>{cat.name}</h2>
-                <p>{cat.description}</p>
-              </li>
-            ))}
-          </ul>
-        </article>
-      </>
-    );
-  }
-}
+export default ({ markdownFiles }) => (
+  <>
+    <Head>
+      <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    </Head>
+    {JSON.stringify(markdownFiles)}
+  </>
+);
+
+export const getStaticProps = async () => {
+  //https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
+  const importAll = (r) => r.keys().map(r);
+
+  const markdownFiles = importAll(
+    require.context("../content/sites", false, /\.md$/)
+  ).map((item) => item.attributes);
+
+  return {
+    props: {
+      markdownFiles,
+    },
+  };
+};

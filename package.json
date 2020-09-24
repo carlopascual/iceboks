@@ -9,6 +9,7 @@
     "export": "yarn run build && next export"
   },
   "dependencies": {
+    "file-loader": "^6.1.0",
     "frontmatter-markdown-loader": "^3.6.0",
     "next": "9.5.3",
     "react": "16.13.1",
