@@ -97,7 +97,8 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      markdownFiles,
+      // https://github.com/vercel/next.js/discussions/11209
+      markdownFiles: JSON.parse(JSON.stringify(markdownFiles)),
     },
   };
 };
