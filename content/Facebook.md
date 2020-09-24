@@ -1,6 +1,6 @@
 ---
 name: Facebook
-url: 'https://www.facebook.com'
+url: 'https://facebook.com'
 description: ''
 ---
 
