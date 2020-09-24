@@ -1,6 +1,6 @@
 ---
 name: Mockup World
-url: 'https://www.mockupworld.co'
+url: 'https://mockupworld.co'
 description: ''
 ---
 
