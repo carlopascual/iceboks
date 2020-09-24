@@ -1,11 +1,25 @@
 import Head from "next/head";
+import styled from "styled-components";
+import Layout from "../components/layout";
+import Post from "../components/post";
+
+const List = styled.div`
+  display: grid;
+  grid-gap: 20px;
+`;
 
 const Page = ({ markdownFiles }) => (
   <>
     <Head>
       <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     </Head>
-    {JSON.stringify(markdownFiles)}
+    <Layout>
+      <List>
+        {markdownFiles.map((item) => (
+          <Post {...item} />
+        ))}
+      </List>
+    </Layout>
   </>
 );
 
