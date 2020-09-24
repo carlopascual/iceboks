@@ -14,7 +14,7 @@ export const getStaticProps = async () => {
   const importAll = (r) => r.keys().map(r);
 
   const markdownFiles = importAll(
-    require.context("../content/sites", false, /\.md$/)
+    require.context("../content", false, /\.md$/)
   ).map((item) => item.attributes);
 
   return {
