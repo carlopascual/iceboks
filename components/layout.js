@@ -1,8 +1,11 @@
 import styled from "styled-components";
+import { HIGHLIGHT_COLOR } from "./styles";
 
 const Header = styled.header`
-  font-size: 20px;
-  padding: 20px;
+  font-size: 15px;
+  color: white;
+  padding: 16px;
+  background: ${HIGHLIGHT_COLOR};
 `;
 
 const BodyWrapper = styled.div`

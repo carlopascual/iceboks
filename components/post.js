@@ -1,31 +1,57 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { BORDER_COLOR } from "./styles";
+import getFavicon from "../lib/get-favicon";
 
 const Outline = styled.div`
-  padding: 20px;
-  font-size: 20px;
+  padding: 16px;
+  width: 100%;
+  max-width: 684px;
+  border: 1px solid ${BORDER_COLOR};
+  border-radius: 4px;
 `;
 
 const Title = styled.h3`
-  margin: 0;
   width: fit-content;
+  font-size: 24px;
 
   &:hover {
     text-decoration: underline;
   }
 `;
 
-const Description = styled.h5`
-  margin: 0;
+const URL = styled.h5`
+  font-weight: 400;
+  opacity: 0.25;
 `;
 
-export default ({ name, description, url }) => (
+const Favicon = styled.img`
+  height: 14px;
+  width: 14px;
+`;
+
+const Description = styled.p``;
+
+export default ({ name, description, url, favicons, ...props }) => (
   <Outline>
-    <Title>
-      <Link href={url}>
-        <a>{name} →</a>
-      </Link>
-    </Title>
-    <Description style={{ marginTop: "20px" }}>{description}</Description>
+    <Link href={url}>
+      <a>
+        <Title>{name}</Title>
+        <Description style={{ marginTop: "8px" }}>{description}</Description>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          {getFavicon(favicons) && (
+            <Favicon
+              src={getFavicon(favicons)}
+              style={{
+                marginRight: "8px",
+                // makes the favicon look more aligned
+                marginTop: "2px",
+              }}
+            />
+          )}
+          <URL>{url}</URL>
+        </div>
+      </a>
+    </Link>
   </Outline>
 );
