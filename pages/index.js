@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-export default ({ markdownFiles }) => (
+const Page = ({ markdownFiles }) => (
   <>
     <Head>
       <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
@@ -9,8 +9,8 @@ export default ({ markdownFiles }) => (
   </>
 );
 
-const getServerSideProps = async () => {
-  //https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
+export const getServerSideProps = async () => {
+  //inspired by: https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
   const importAll = (r) => r.keys().map(r);
 
   const markdownFiles = importAll(
@@ -23,3 +23,5 @@ const getServerSideProps = async () => {
     },
   };
 };
+
+export default Page;

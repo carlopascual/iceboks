@@ -6,12 +6,6 @@ module.exports = {
       options: { mode: ["react-component"] },
     });
 
-    cfg.module.rules.push({
-      test: /\.md$/,
-      loader: "file-loader",
-      options: { name: "[name].[ext]" },
-    });
-
     return cfg;
   },
 };
