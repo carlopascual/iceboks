@@ -9,7 +9,7 @@ const Page = ({ markdownFiles }) => (
   </>
 );
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   //inspired by: https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
   const importAll = (r) => r.keys().map(r);
 
