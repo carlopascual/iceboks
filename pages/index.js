@@ -3,6 +3,12 @@ import getFavicons from "get-website-favicon";
 import styled from "styled-components";
 import Layout from "../components/layout";
 import Post from "../components/post";
+
+const Header = styled.h1`
+  font-size: 44px;
+  line-height: 1.14;
+`;
+
 const List = styled.div`
   display: grid;
   grid-gap: 20px;
@@ -11,11 +17,21 @@ const List = styled.div`
 const Page = ({ markdownFiles }) => (
   <>
     <Layout>
-      <List style={{ marginTop: "40px" }}>
-        {markdownFiles.map((item) => (
-          <Post {...item} />
-        ))}
-      </List>
+      {/* getting the style that aligns left with a margin then collapses on mobile */}
+      {/* https://stackoverflow.com/questions/36861406/add-horizontal-margin-if-space-available */}
+      <div style={{ display: "flex" }}>
+        <div style={{ flex: "1 0 0", maxWidth: "108px" }}></div>
+        <div style={{ width: "684px" }}>
+          <Header>
+            Free, curated, and categorized library of digital resources
+          </Header>
+          <List style={{ marginTop: "40px" }}>
+            {markdownFiles.map((item) => (
+              <Post {...item} />
+            ))}
+          </List>
+        </div>
+      </div>
     </Layout>
   </>
 );

@@ -6,7 +6,6 @@ import getFavicon from "../lib/get-favicon";
 const Outline = styled.div`
   padding: 16px;
   width: 100%;
-  max-width: 684px;
   border: 1px solid ${BORDER_COLOR};
   border-radius: 4px;
 `;

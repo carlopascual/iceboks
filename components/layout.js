@@ -10,6 +10,7 @@ const Header = styled.header`
 
 const BodyWrapper = styled.div`
   padding: 20px;
+  margin-bottom: 50px;
 `;
 
 export default ({ children }) => (
