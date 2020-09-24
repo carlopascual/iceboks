@@ -1,6 +1,6 @@
 ---
 name: Rappler
-url: 'https://www.rappler.com'
+url: 'https://rappler.com'
 description: ''
 ---
 
