@@ -1,4 +1,4 @@
 ---
-url: 'http://www.lodash.com'
+url: 'https://lodash.com'
 ---
 
