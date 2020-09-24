@@ -1,8 +1,10 @@
 import _ from "lodash";
 import getFavicons from "get-website-favicon";
+import urlMetadata from "url-metadata";
 import styled from "styled-components";
 import Layout from "../components/layout";
 import Post from "../components/post";
+import getFavicon from "../lib/get-favicon";
 
 const Header = styled.h1`
   font-size: 44px;
@@ -42,10 +44,49 @@ export const getStaticProps = async () => {
 
   const markdownFiles = await Promise.all(
     importAll(require.context("../content", false, /\.md$/)).map(
-      async (item) => {
-        const favicons = await getFavicons(item.attributes.url);
+      async ({ attributes }) => {
+        const entry = { ...attributes };
 
-        return { favicons, ...item.attributes };
+        const checkMissing = (required) =>
+          _.reduce(
+            required,
+            (result, value) => {
+              if (!entry[value]) {
+                result[value] = true;
+              }
+
+              return result;
+            },
+            {}
+          );
+
+        // check missing entry attributes
+        const missingEntries = checkMissing([
+          "name",
+          "description",
+          "thumbnail",
+        ]);
+
+        // skip processing if nothing is missing
+        if (missingEntries.length <= 0) return entry;
+
+        // process thumbnail if missing
+        if (missingEntries.thumbnail) {
+          entry.thumbnail = getFavicon(await getFavicons(attributes.url));
+        }
+
+        const missingMetadata = _.omit(missingEntries, "thumbnail");
+
+        // if any other metadata is missing
+        if (Object.keys(missingMetadata).length > 0) {
+          const fetchedMetadata = await urlMetadata(attributes.url);
+
+          if (missingMetadata.name) entry.name = fetchedMetadata.title;
+          if (missingMetadata.description)
+            entry.description = fetchedMetadata.description;
+        }
+
+        return entry;
       }
     )
   );
